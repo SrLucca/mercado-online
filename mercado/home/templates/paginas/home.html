@@ -1,0 +1,64 @@
+{% extends  'base.html' %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+    <title>Home</title>
+
+    <style>
+        body{
+
+            font-family: 'Didact Gothic', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+        {% if messages %}
+            {% for success in messages %}
+            <div class="text-center">
+                <div class="alert alert-success" role="alert">
+                    {{success}}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <center><div style="display:inline-block;vertical-align:top;max-width: 4%;">
+        <img src="{% static 'img/snake.png' %}" alt="snake" class="img-thumbnail">
+        </div>
+        <div style="display:inline-block;">
+        <p>
+            <h1 class="text-center">Django Online Market</h1>
+        </p>
+        </div></center>
+        
+
+        <div class="container p-3 my-3 bg-success text-white">
+            <h4>Sobre</h4>
+            <p>Este é um projeto simples de uma plataforma de compra e venda online de produtos, com seu Back-end <strong>100% </strong>no Framework Django.</p>
+            <br>
+            <strong><p class="text-center">Desenvolvido por Lucca</p></strong>
+            
+        </div>
+
+        <div class="container p-5 my-5 text-black">
+
+            <h3>Algum dos produtos a venda:</h3>
+
+            {% for users in promo_actives %}
+            <a href="/profile/{{users.username}}">{{users.username}}</a>
+            {% endfor %}
+        </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if messages %}
+        {% for success in messages %}
+        <div class="text-center">    
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{success}}
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+
+    <div class="container p-3 my-3 bg-success text-light">
+        <div class="text-center">
+        <h2>{{user_request.username}}</h2>
+        <div class="content-section">
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ user_request.profile.image.url }}" width="200" height="200">
+                <div class="media-body">
+                <p>{{ user_request.email }}</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

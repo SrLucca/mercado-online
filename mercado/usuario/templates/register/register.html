@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<body>
+
+    {% block content %}
+
+    {% if messages %}
+        {% for success in messages %}
+        <div class="text-center">    
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{success}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="container py-5">
+        <h1>Criar Conta</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ register_form|crispy }}                    
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+        <p class="text-left">Se você já possui uma conta, faça <a href="/login">login</a>.</p>
+    </div>
+
+    {% endblock %}
+</body>
+</html>
