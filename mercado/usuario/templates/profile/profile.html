@@ -30,5 +30,15 @@
         </div>
     </div>
 
+    <div class="container p-5 my-5">
+        <div class="text-left">
+            <h3>Seus produtos anunciados:</h3>
+            {% for produtos_anunciados in user.profile.produto_anunciado.all %}
+                <h4>{{produtos_anunciados.nome}}</h4>
+                <img src="{{produtos_anunciados.images.url}}" alt="">
+            {% endfor %}
+        </div>
+    </div>
+
 
 {% endblock %}

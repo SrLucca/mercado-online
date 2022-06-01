@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from produto.models import AnunciarProduto,ProdutoComprado
 from PIL import Image
 # Create your models here.
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) # Deleta profile quando usuario é deletado
     image = models.ImageField(default='user.png', upload_to='profile_pics')
+    produto_anunciado = models.ManyToManyField(AnunciarProduto, blank=True)
+    produto_comprado = models.ManyToManyField(ProdutoComprado, blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
