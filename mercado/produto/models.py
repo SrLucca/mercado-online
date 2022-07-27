@@ -15,7 +15,7 @@ class AnunciarProduto(models.Model):
     nome = models.CharField(max_length=300, blank=False, null=False)
     descricao = models.TextField(blank=False, null=False)
     categoria = models.CharField(blank=False, null=False, choices=CATEGORIA, max_length=300)
-    image = models.FileField(upload_to='anuncios_pics', default="online_shopping.png")
+    image = models.ImageField(blank=True)
     data_anuncio = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -26,3 +26,10 @@ class ProdutoComprado(models.Model):
 
     def __str__(self):
         return self.produto
+
+class ImagemProduto(models.Model):
+    produto = models.ForeignKey(AnunciarProduto, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='imagens/')
+
+    def __str__(self):
+        return self.produto.nome
