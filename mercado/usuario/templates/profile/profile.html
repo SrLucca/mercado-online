@@ -34,7 +34,7 @@
         <div class="text-left">
             <h3>Seus produtos anunciados:</h3>
             {% for produtos_anunciados in user.profile.produto_anunciado.all %}
-                <h4>{{produtos_anunciados.nome}}</h4>
+                <a href="/produto/{{produtos_anunciados.id}}"><h4>{{produtos_anunciados.nome}}</h4></a>
                 <img src="{{produtos_anunciados.images.url}}" alt="">
             {% endfor %}
         </div>
