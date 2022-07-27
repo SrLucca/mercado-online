@@ -56,7 +56,7 @@
             <h3>Algum dos produtos a venda:</h3>
 
             {% for produto in promo_actives %}
-            <a href="/profile/{{users.username}}">{{produto.nome}}</a>
+            <a href="/produto/{{produto.id}}">{{produto.nome}}</a>
             {% endfor %}
         </div>
     {% endblock %}
